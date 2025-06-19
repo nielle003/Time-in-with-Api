@@ -1,0 +1,160 @@
+.current-record-section {
+  margin-bottom: 2rem;
+  
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--ion-color-dark);
+  }
+}
+
+.time-card {
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &.time-in-card {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-left: 4px solid #28a745;
+    
+    ion-card-content {
+      padding: 1rem;
+      
+      .time-record-item {
+        .time-icon {
+          color: #28a745;
+        }
+      }
+    }
+  }
+  
+  &.time-out-card {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-left: 4px solid #ffc107;
+    
+    ion-card-content {
+      padding: 1rem;
+      
+      .time-record-item {
+        .time-icon {
+          color: #ffc107;
+        }
+      }
+    }
+  }
+}
+
+.time-record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  
+  .time-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--ion-color-dark);
+    
+    .time-icon {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .time-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--ion-color-dark);
+  }
+}
+
+.attendance-report-link {
+  text-align: center;
+  margin: 1.5rem 0;
+  
+  ion-button {
+    --color: var(--ion-color-danger);
+    font-weight: 500;
+  }
+}
+
+.other-attendances-section {
+  margin-top: 2rem;
+  
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--ion-color-dark);
+  }
+  
+  ion-list {
+    background: transparent;
+    padding: 0;
+    
+    ion-item {
+      --background: var(--ion-color-light);
+      --border-radius: 8px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      
+      ion-icon[slot="start"] {
+        color: #ffc107;
+        font-size: 1.5rem;
+        margin-inline-end: 16px;
+      }
+      
+      ion-icon[slot="end"] {
+        color: var(--ion-color-medium);
+      }
+      
+      ion-label {
+        h3 {
+          font-weight: 600;
+          color: var(--ion-color-dark);
+          margin-bottom: 0.25rem;
+          font-size: 1rem;
+        }
+        
+        p {
+          color: var(--ion-color-medium);
+          font-size: 0.9rem;
+          margin: 0.1rem 0;
+          line-height: 1.3;
+        }
+      }
+      
+      &:hover {
+        --background: var(--ion-color-light-shade);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .time-value {
+    font-size: 1.3rem !important;
+  }
+  
+  .time-label {
+    font-size: 0.9rem;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .time-in-card {
+    background: linear-gradient(135deg, #1e3a2e 0%, #2d4a3d 100%) !important;
+    border-left-color: #40c463 !important;
+  }
+  
+  .time-out-card {
+    background: linear-gradient(135deg, #3a3420 0%, #4a4230 100%) !important;
+    border-left-color: #ffd43b !important;
+  }
+}

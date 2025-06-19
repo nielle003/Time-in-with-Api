@@ -1,0 +1,193 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Daily Time Record</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Current Time Record Section -->
+  <div class="current-record-section">
+    <h2 class="section-title">Your Current Time Record</h2>
+    
+    <!-- Time In Card -->
+    <ion-card class = "card">
+      <ion-card class="time-card time-in-card">
+        <ion-card-content>
+          <div class="time-record-item">
+            <div class="time-label">
+              <span>Timed-in</span>
+            </div>
+            <ion-icon name="time-outline" class="time-icon" slot = 'end'></ion-icon>
+            <div class="time-value">{{ formattedTime }}</div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <!-- Time Out Card -->
+      <ion-card class="time-card time-out-card">
+        <ion-card-content>
+          <div class="time-record-item">
+            <div class="time-label">
+              <ion-icon name="time-outline" class="time-icon"></ion-icon>
+              <span>Timed-out</span>
+            </div>
+            <div class="time-value">N/A</div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-card>
+  </div>
+
+  <!-- Other Attendances Section -->
+  <div class="other-attendances-section">
+    <h2 class="section-title">Other Attendances</h2>
+    
+    <ion-list>
+      <ion-item button (click)="viewDetails('2025-06-17')">
+        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>2025-06-17</h3>
+          <p>Time-in: 07:36 AM</p>
+          <p>Time-out: 05:07 PM</p>
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item button (click)="viewDetails('2025-06-16')">
+        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>2025-06-16</h3>
+          <p>Time-in: 07:46 AM</p>
+          <p>Time-out: 05:32 PM</p>
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item button (click)="viewDetails('2025-06-13')">
+        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>2025-06-13</h3>
+          <p>Time-in: 07:59 AM</p>
+          <p>Time-out: 05:17 PM</p>
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item button (click)="viewDetails('2025-06-11')">
+        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>2025-06-11</h3>
+          <p>Time-in: 07:52 AM</p>
+          <p>Time-out: 05:17 PM</p>
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ion-item button (click)="viewDetails('2025-06-10')">
+        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
+        <ion-label>
+          <h3>2025-06-10</h3>
+          <p>Time-in: 07:59 AM</p>
+          <p>Time-out: --:-- --</p>
+        </ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<style>
+.current-record-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ion-color-dark);
+}
+
+.time-card {
+  margin: 0.5rem 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.time-in-card {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+ 
+}
+
+.time-out-card {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+ 
+}
+
+.time-record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.time-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--ion-color-dark);
+}
+
+.time-icon {
+  font-size: 1.2rem;
+}
+
+.time-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ion-color-dark);
+}
+
+.attendance-report-link {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.other-attendances-section {
+  margin-top: 2rem;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: var(--ion-color-light);
+  --border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+}
+
+ion-item h3 {
+  font-weight: 600;
+  color: var(--ion-color-dark);
+  margin-bottom: 0.25rem;
+}
+
+ion-item p {
+  color: var(--ion-color-medium);
+  font-size: 0.9rem;
+  margin: 0.1rem 0;
+}
+
+.time-in-card ion-card-content {
+  padding: 1rem;
+}
+
+.time-out-card ion-card-content {
+  padding: 1rem;
+}
+</style>
