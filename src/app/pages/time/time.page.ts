@@ -48,6 +48,7 @@ export class TimePage implements OnInit {
     this.router.navigate(['/attendance-report']);
   }
    viewDetails(date: string) {
+    console.log('Navigating with date:', date);
     this.router.navigate(['/details'], { queryParams: { date: date } });
 ;
   }

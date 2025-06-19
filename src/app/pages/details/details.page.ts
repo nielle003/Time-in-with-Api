@@ -11,24 +11,35 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./details.page.scss'],
   standalone:false
 })
+
 export class DetailsPage implements OnInit {
 
-  date: string = "";
+  date:string = '';
+
   attendanceData: any;
   constructor(private http: HttpClient, private detailService: DetailService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('DetailPage ngOnInit fired!');
     this.route.queryParamMap.subscribe(params => {
-      const date = params.get('date');
-      console.log("Date from query params:", date);
-    });
+      const passedData = params.get('date');
+      console.log("Date from query params:", passedData);
 
-    this.fetchAttendanceDetails(this.date);
+      if (passedData) {
+        this.date = passedData;
+        this.fetchAttendanceDetails(this.date);
+      } else {
+        console.warn('No date param found.');
+      }
+      
+    });
   }
 
   fetchAttendanceDetails(date: string){
-    const url = `http://localhost/attendance.php?date=${date}`;
+    const url = `http://localhost/attendance.php?date=${this.date}`;
 
+    console.log(url);
+    console.log(date);
     this.http.get(url).subscribe(res => {
       this.attendanceData = res;
       console.log('Attendance for the date:', this.attendanceData);

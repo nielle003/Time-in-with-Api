@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>details</ion-title>
+<ion-header>
+  <ion-toolbar [ngStyle]="{'--background': '#ed1b2f', '--color': '#ffffff'}">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/time"></ion-back-button>
+       <ion-title>Attendance Details</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" *ngIf="attendanceData">
+
+  <ion-card *ngIf="attendanceData.details; else noRecord">
+    <ion-card-header>
+      <ion-card-title>Date: {{ attendanceData.date }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Time In:</strong> {{ attendanceData.details.timeIn }}</p>
+      <p><strong>Time Out:</strong> {{ attendanceData.details.timeOut || 'N/A' }}</p>
+      <p><strong>Task:</strong> {{ attendanceData.details.task }}</p>
+      <p><strong>Accomplishment:</strong> {{ attendanceData.details.accomplishment }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #noRecord>
+    <ion-text color="danger">
+      <p>{{ attendanceData.message }}</p>
+    </ion-text>
+  </ng-template>
+
 </ion-content>
