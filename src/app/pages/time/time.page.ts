@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/module.d-CnjH8Dlt';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
+import { DetailService } from 'src/app/service/details.service';
 @Component({
   selector: 'app-time',
   templateUrl: './time.page.html',
@@ -11,35 +12,10 @@ import { Router } from '@angular/router';
 
 export class TimePage implements OnInit {
   formattedTime: string = '';
+  attendanceRecords: any[] = [];
 
-   attendanceRecords = [
-    {
-      date: '2025-06-17',
-      timeIn: '07:36 AM',
-      timeOut: '05:07 PM'
-    },
-    {
-      date: '2025-06-16',
-      timeIn: '07:46 AM',
-      timeOut: '05:32 PM'
-    },
-    {
-      date: '2025-06-13',
-      timeIn: '07:59 AM',
-      timeOut: '05:17 PM'
-    },
-    {
-      date: '2025-06-11',
-      timeIn: '07:52 AM',
-      timeOut: '05:17 PM'
-    },
-    {
-      date: '2025-06-10',
-      timeIn: '07:59 AM',
-      timeOut: null
-    }
-  ];
-  constructor(private apiService: ApiService, private router: Router) {}
+   
+  constructor(private apiService: ApiService, private router: Router, private detailService: DetailService) {}
 
   ngOnInit() {
     this.apiService.getCurrentTime().subscribe(res => {
@@ -57,14 +33,23 @@ export class TimePage implements OnInit {
         });
       }
     });
+
+
+
+    this.detailService.getDetails().subscribe((res: any)=> {
+      this.attendanceRecords = res.records;
+    });
+
+
+
   }
   viewAttendanceReport() {
     // Navigate to attendance report page
     this.router.navigate(['/attendance-report']);
   }
    viewDetails(date: string) {
-    // Navigate to specific attendance detail page
-    this.router.navigate(['/attendance-detail', date]);
+    this.router.navigate(['/details'], { queryParams: { date: date } });
+;
   }
   //  getTimeOutDisplay(): string {
   //   //return this.currentTimeOut || 'N/A';

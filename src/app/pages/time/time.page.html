@@ -45,52 +45,12 @@
     <h2 class="section-title">Other Attendances</h2>
     
     <ion-list>
-      <ion-item button (click)="viewDetails('2025-06-17')">
+      <ion-item button (click)="viewDetails(record.date)" *ngFor="let record of attendanceRecords">
         <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
         <ion-label>
-          <h3>2025-06-17</h3>
-          <p>Time-in: 07:36 AM</p>
-          <p>Time-out: 05:07 PM</p>
-        </ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item button (click)="viewDetails('2025-06-16')">
-        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
-        <ion-label>
-          <h3>2025-06-16</h3>
-          <p>Time-in: 07:46 AM</p>
-          <p>Time-out: 05:32 PM</p>
-        </ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item button (click)="viewDetails('2025-06-13')">
-        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
-        <ion-label>
-          <h3>2025-06-13</h3>
-          <p>Time-in: 07:59 AM</p>
-          <p>Time-out: 05:17 PM</p>
-        </ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item button (click)="viewDetails('2025-06-11')">
-        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
-        <ion-label>
-          <h3>2025-06-11</h3>
-          <p>Time-in: 07:52 AM</p>
-          <p>Time-out: 05:17 PM</p>
-        </ion-label>
-        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
-      </ion-item>
-
-      <ion-item button (click)="viewDetails('2025-06-10')">
-        <ion-icon name="calendar-outline" slot="start" color="warning"></ion-icon>
-        <ion-label>
-          <h3>2025-06-10</h3>
-          <p>Time-in: 07:59 AM</p>
-          <p>Time-out: --:-- --</p>
+          <h3>{{record.date}}</h3>
+          <p>Time-in: {{record.timeIn}}</p>
+          <p>Time-out: {{record.timeOut || 'N/A'}}</p>
         </ion-label>
         <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
       </ion-item>
@@ -124,6 +84,16 @@
 .time-out-card {
   background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
  
+}
+.card{
+  background: transparent;
+    padding: 0;
+  --background: var(--ion-color-light);
+      --border-radius: 8px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
 }
 
 .time-record-item {

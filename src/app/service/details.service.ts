@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
-  private apiUrl = 'http://localhost/get-time.php';
+export class DetailService {
+  private apiUrl = 'http://localhost/attendance.php';
   constructor(private http: HttpClient) { }
 
-  getCurrentTime(): Observable<any> {
+  getDetails(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
 
   }
