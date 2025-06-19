@@ -11,7 +11,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "add:android": "ionic capacitor add android",
-    "build:android": "ionic capacitor build android --prod --no-open"
+    "build:android": "ionic capacitor build android --prod --no-open",
+    "add:page": "ng generate page",
+    "add:module": "ng generate module",
+    "add:component": "ng generate component",
+    "add:service": "ng generate service"
   },
   "private": true,
   "dependencies": {
