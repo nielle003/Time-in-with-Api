@@ -1,24 +1,65 @@
 <ion-header>
-  <ion-toolbar [ngStyle]="{'--background': '#ed1b2f', '--color': '#ffffff'}">
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/time"></ion-back-button>
-       <ion-title>Attendance Details</ion-title>
     </ion-buttons>
+    <ion-title>Daily Time Record</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="attendanceData">
-
-  <ion-card *ngIf="attendanceData.details; else noRecord">
-    <ion-card-header>
-      <ion-card-title>Date: {{ attendanceData.date }}</ion-card-title>
-    </ion-card-header>
-
+  <h2 style="font-weight: bold; font-size: 1.5rem; margin: 20px 0; color: #000;">
+        Time Record for {{ attendanceData.date }}
+  </h2>
+  <ion-card *ngIf="attendanceData.details; else noRecord" [ngStyle]="{'--background': '#F1F3F4', '--color': '#000000', '--border-radius': '16px'}">
     <ion-card-content>
-      <p><strong>Time In:</strong> {{ attendanceData.details.timeIn }}</p>
-      <p><strong>Time Out:</strong> {{ attendanceData.details.timeOut || 'N/A' }}</p>
-      <p><strong>Task:</strong> {{ attendanceData.details.task }}</p>
-      <p><strong>Accomplishment:</strong> {{ attendanceData.details.accomplishment }}</p>
+      <!-- Date Header -->
+
+      <!-- Time In/Out Section -->
+      <div style="margin: 30px 0;">
+        <!-- Timed-in -->
+        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+          <ion-icon name="log-in-outline" style="color: #ff9500; font-size: 1.5rem; margin-right: 15px;"></ion-icon>
+          <div>
+            <div style="font-size: 1rem; color: #666; margin-bottom: 2px;">Timed-in</div>
+            <div style="font-size: 1.1rem; font-weight: 500; color: #000;">{{ attendanceData.details.timeIn }}</div>
+          </div>
+        </div>
+
+        <!-- Timed-out -->
+        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+          <ion-icon name="log-out-outline" style="color: #ff3333; font-size: 1.5rem; margin-right: 15px;"></ion-icon>
+          <div>
+            <div style="font-size: 1rem; color: #666; margin-bottom: 2px;">Timed-out</div>
+            <div style="font-size: 1.1rem; font-weight: 500; color: #000;">{{ attendanceData.details.timeOut || 'N/A' }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Details Section -->
+      <div style="margin: 30px 0;">
+        <h3 style="font-weight: bold; font-size: 1.3rem; margin-bottom: 10px; color: #000;">Details</h3>
+        <p style="color: #666; font-size: 1rem; margin: 0;">No special details</p>
+      </div>
+
+      <!-- Accomplishment Report Section -->
+      <div style="margin: 30px 0;">
+        <h3 style="font-weight: bold; font-size: 1.3rem; margin-bottom: 15px; color: #000;">Accomplishment Report</h3>
+        
+        <!-- Task for the Day -->
+        <div style="margin-bottom: 20px;">
+          <div style="color: #999; font-size: 0.9rem; margin-bottom: 5px;">Task for the Day</div>
+          <div style="color: #000; font-size: 1rem; line-height: 1.4;">{{ attendanceData.details.task }}</div>
+        </div>
+
+        <!-- Accomplishment for the day -->
+        <div>
+          <div style="color: #999; font-size: 0.9rem; margin-bottom: 10px;">Accomplishment for the day</div>
+          <div style="color: #000; font-size: 1rem; line-height: 1.5;">
+            {{ attendanceData.details.accomplishment }}
+          </div>
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 

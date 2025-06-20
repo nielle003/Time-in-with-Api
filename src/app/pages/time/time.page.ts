@@ -52,13 +52,4 @@ export class TimePage implements OnInit {
     this.router.navigate(['/details'], { queryParams: { date: date } });
 ;
   }
-  //  getTimeOutDisplay(): string {
-  //   //return this.currentTimeOut || 'N/A';
-  // }
-  // isCurrentlyTimedIn(): boolean {
-  //   //return this.currentTimeIn !== null && this.currentTimeOut ===
-  // 
-  //  
-  //  null;
-  // }
 }

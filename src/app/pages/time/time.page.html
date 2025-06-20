@@ -13,15 +13,20 @@
     <h2 class="section-title">Your Current Time Record</h2>
     
     <!-- Time In Card -->
-    <ion-card class = "card">
+    <ion-card class = "overall-card">
       <ion-card class="time-card time-in-card">
         <ion-card-content>
           <div class="time-record-item">
-            <div class="time-label">
+            <div class="time-label" style="font-size: 20px;">
               <span>Timed-in</span>
             </div>
-            <ion-icon name="time-outline" class="time-icon" slot = 'end'></ion-icon>
-            <div class="time-value">{{ formattedTime }}</div>
+            <div style="display: flex; justify-content: flex-end; width: 60%;">
+              <div style="display: flex; align-items: center; gap: 6px; color: black; font-size: 24px; font-weight: bold;">
+
+                <ion-icon name="time-outline" style="font-size: 30px; color: #28a745;"></ion-icon>
+                {{ formattedTime }}
+              </div>
+            </div>
           </div>
         </ion-card-content>
       </ion-card>
@@ -29,11 +34,15 @@
       <ion-card class="time-card time-out-card">
         <ion-card-content>
           <div class="time-record-item">
-            <div class="time-label">
-              <ion-icon name="time-outline" class="time-icon"></ion-icon>
+            <div class="time-label" style="font-size: 20px;">
               <span>Timed-out</span>
             </div>
-            <div class="time-value">N/A</div>
+            <div style="display: flex; justify-content: flex-end; width: 60%;">
+              <div style="display: flex; align-items: center; gap: 6px; color: black; font-size: 24px; font-weight: bold; ">
+                <ion-icon name="time-outline" style="font-size: 30px; color: #ffc107;"></ion-icon>
+                N/A
+              </div>
+            </div>
           </div>
         </ion-card-content>
       </ion-card>

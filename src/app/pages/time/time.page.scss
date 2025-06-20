@@ -16,7 +16,7 @@
   
   &.time-in-card {
     background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-    border-left: 4px solid #28a745;
+    
     
     ion-card-content {
       padding: 1rem;
@@ -31,7 +31,7 @@
   
   &.time-out-card {
     background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-    border-left: 4px solid #ffc107;
+    
     
     ion-card-content {
       padding: 1rem;
@@ -134,6 +134,21 @@
     }
   }
 }
+.overall-card {
+  width: 100%;
+  max-width: 600px;       // match the width behavior
+  margin: 0 auto;         // center it horizontally
+  padding: 0 16px;  
+  box-sizing: border-box;
+  padding-top: .7rem;
+  padding-bottom: .7rem;
+
+  // Matching background color
+  background-color: #f4f5f8; // Same as used in .other-attendances-section > ion-item
+  color: #808080;         // your preferred text color
+  border-radius: 8px;     // optional, for consistency
+}
+
 
 // Responsive adjustments
 @media (max-width: 576px) {
